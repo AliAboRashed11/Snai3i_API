@@ -1,0 +1,61 @@
+﻿@model List<Snai3i_BLL.DTO.CardDTOS.CardDTO>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Shopping Cart</h2>
+        <div class="row">
+            <div class="col-md-8">
+                @if (Model != null && Model.Count > 0)
+                {
+                    <div class="list-group">
+                        @foreach (var item in Model)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h5>@item.ToolName</h5>
+                                    <p>Price: <span class="badge badge-secondary">@item.Price $</span></p>
+                                    <p>Quantity: @item.Quantity</p>
+                                </div>
+                                <div>
+
+
+                                
+                                    <form method="post" action="@Url.Action("Delete", "Cart")" style="display:inline;">
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-warning" role="alert">
+                        The shopping cart is empty.
+                    </div>
+                }
+            </div>
+            <div class="col-md-4">
+                <h4>Summary</h4>
+                <p>Total: <strong>$@Model.Sum(x => x.Price * x.Quantity)</strong></p>
+                <form method="post" action="@Url.Action("Checkout", "Cart")">
+                    <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @*  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> *@
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

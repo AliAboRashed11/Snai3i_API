@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@using Snai3i_BLL.DTO.ReviewDto
+
+@model ReviewReadDTO
+
+<h2>Review List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>UserId</th>
+            <th>WorkerId</th>
+            <th>
+                Comment
+            </th>
+            <th>
+                Rate
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@Model.UserName</td>
+            <td>@Model.workername</td>
+            <td>@Model.Comment</td>
+            <td>@Model.Rate</td>
+
+        </tr>
+
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "User Location";
+}
+
+
+
+<script>
+    // Function to fetch location using the browser's Geolocation API
+    function fetchUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    // Success callback function
+    function onSuccess(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        // Send the latitude and longitude to the server using AJAX
+        fetch('/Accounts/GetLocationData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ latitude: latitude, longitude: longitude })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Location data:", data); // Handle the location data
+                document.getElementById("location-info").innerText = JSON.stringify(data); // Display location data
+            })
+            .catch(error => {
+                console.error("Error fetching location:", error);
+            });
+    }
+
+    // Error callback function
+    function onError(error) {
+        console.error("Error getting location:", error);
+    }
+
+    // Trigger the function to fetch location when the page loads
+    window.onload = function () {
+        fetchUserLocation();
+    };
+</script>

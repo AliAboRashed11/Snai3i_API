@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Snai3i_BLL.DTO.ReviewDto
+
+@model IEnumerable<ReviewAddDTO>
+
+<form method="post" enctype="multipart/form-data" action="@Url.Action("SaveData")">
+    <div>
+        <label>UserId</label>
+        <input type="Text" name="UserId" class="form-control" />
+    </div>
+        <div>
+        <label>WorkerId</label>
+        <input type="Text" name="WorkerId" class="form-control" />
+    </div>
+    <div>
+        <label>Comment</label>
+        <input type="Text" name="Comment" class="form-control" />
+    </div>
+
+
+
+
+    <input type="submit" value="Save" class="btn btn-outline-primary" />
+</form>

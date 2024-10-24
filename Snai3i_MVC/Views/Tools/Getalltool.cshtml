@@ -1,0 +1,69 @@
+﻿@using Snai3i_BLL.DTO.ToolsDTO
+@model ToolsDataDto
+@{
+    ViewData["Title"] = "Tools";
+}
+
+<h1>Tools</h1>
+
+@if (Model.toolsReadList != null && Model.toolsReadList.Count > 0)
+
+{
+    <div class="row">
+        @foreach (var Tool in Model.toolsReadList)
+
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    @* If Tool.Image is a URL or base64 string *@
+                    <img src="https://localhost:7000/Uploads/@Tool.Image" class="card-img-top" alt="@Tool.Name" style="max-height:200px; object-fit:cover;" />
+                    @* <img style="width:100px; height:100px;" src="https://localhost:7000/Uploads/@Tool.Image" />  *@
+
+                    <div class="card-body">
+                        <h5 class="card-title">@Tool.Name</h5>
+                        <p class="card-text">@Tool.Description</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+else
+
+{
+    <h3>No tools available at the moment.</h3>
+}
+
+<nav>
+    <ul class="pagination">
+        @if (Model.data.HasPreviousPage)
+
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="/Tools" asp-route-PageNumber="@(Model.data.CurrentPage - 1)" asp-route-pagesize="@Model.data.pageSize">Previous</a>
+            </li>
+        }
+
+        @for (int i = 1; i <= Model.data.TotalPages; i++)
+
+        {
+            <li class="page-item @(i == Model.data.CurrentPage ? "active" : "")">
+                <a class="page-link" asp-controller="/Tools" asp-route-PageNumber="@i" asp-route-pagesize="@Model.data.pageSize">@i</a>
+            </li>
+        }
+
+        @if (Model.data.HasNextPage)
+
+        {
+            <li class="page-item">
+                <a class="page-link" asp-controller="/Tools" asp-route-PageNumber="@(Model.data.CurrentPage + 1)" asp-route-pagesize="@Model.data.pageSize">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
+}
+else
+{
+<p>No Tools found.</p>
+}

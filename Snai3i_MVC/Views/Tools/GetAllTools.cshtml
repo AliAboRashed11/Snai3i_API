@@ -1,0 +1,87 @@
+﻿@using Snai3i_BLL.DTO.ToolsDTO;
+
+@model IEnumerable<ReadToolDTO>
+
+
+
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Tools
+    </div>
+    <a href="@Url.Action("Add", "Tools")" class="btn btn-warning m-4">New Tools</a>
+
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Size</th>
+
+                    <th>Operation</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Size</th>
+
+                    <th>Operation</th>
+
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var Tool in Model)
+                {
+                    <tr>
+                        <td>@Tool.Name</td>
+                        <td>@Tool.Description</td>
+                        @* <td><img style="width:100px; height:100px;" src="~/img/@Tool.Image" /> </td> *@
+                        <td><img style="width:100px; height:100px;" src="https://localhost:7000/Uploads/@Tool.Image" /> </td>
+                      <td>
+                          
+                            <table class="p-2">
+                                <tr>
+                                        <th>Price</th>
+                                        <th>Size</th>
+                                        <th>Stock</th>
+
+                                </tr>
+                                @foreach (var size in Tool.sizes)
+                                {
+
+                                    <tr class="m-2">
+                                        <td>@size.Price</td>
+                                        <td>@size.ToolSize</td>
+                                        <td>@size.Stock</td>
+
+                                </tr>
+                                }
+                            </table>
+                           
+                      </td>
+                        
+                        <td>
+                            <a href="@Url.Action("Edit", "Tools", new { Id = @Tool.Id })" class="btn btn-primary">Edit</a>
+                            <a href="@Url.Action("Delete", "Tools", new { Id = @Tool.Id })" class="btn btn-danger">Delete</a>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@using Snai3i_BLL.DTO.WorkerDto
+@model WorkerDataDto
+@{
+    ViewData["Title"] = "Workers";
+}
+
+<h1>Workers</h1>
+
+
+   <div class="container-xxl py-5">
+ <div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="text-secondary text-uppercase">Our Technicians</h6>
+        <h1 class="mb-5">Our Expert Technicians</h1>
+    </div>
+     <div class="row g-4">
+        @if (Model.workerReadList != null && Model.workerReadList.Count > 0)
+        {
+foreach (var Workers in Model.workerReadList)
+    {
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="team-item">
+    <div class="position-relative overflow-hidden">
+    <img class="img-fluid" src="https://localhost:7000/Uploads/@Workers.image" alt="">
+    </div>
+    <div class="team-text">
+    <div class="bg-light">
+    <h5 class="fw-bold mb-0">@Workers.LastName</h5>
+    </div>
+
+    </div>
+    </div>
+    </div>
+   
+    }
+    }
+    </div>
+    </div>
+    </div>
+
+    
+
+    <nav>
+        <ul class="pagination">
+            @if (Model.data.HasPreviousPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="/Worker" asp-route-PageNumber="@(Model.data.CurrentPage - 1)" asp-route-pagesize="@Model.data.pageSize">Previous</a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.data.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.data.CurrentPage ? "active" : "")">
+                    <a class="page-link" asp-controller="/Worker" asp-route-PageNumber="@i" asp-route-pagesize="@Model.data.pageSize">@i</a>
+                </li>
+            }
+
+            @if (Model.data.HasNextPage)
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-controller="/Worker" asp-route-PageNumber="@(Model.data.CurrentPage + 1)" asp-route-pagesize="@Model.data.pageSize">Next</a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+else
+{
+    <p>No workers found.</p>
+}

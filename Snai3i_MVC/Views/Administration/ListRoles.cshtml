@@ -1,0 +1,49 @@
+﻿@using Snai3i_BLL.DTO.AdminstrationDto
+
+@model List<RoleReadDto>
+
+@{
+    ViewBag.Title = "All Roles";
+}
+
+<h1>All Roles</h1>
+
+@if (Model.Any())
+{
+    <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRoles"
+       asp-controller="Administration">Add New Role</a>
+
+    foreach (var role in Model)
+    {
+        <div class="card mb-3">
+            <div class="card-header">
+                Role Id : @role.RoleId
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@role.RoleName</h5>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Administration" asp-action="EditRole" 
+                asp-route-RoleId="@role.RoleId" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="card">
+        <div class="card-header">
+            No roles created yet
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to create a role
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Administration" asp-action="CreateRoles">
+                Create Role
+            </a>
+        </div>
+    </div>
+} 

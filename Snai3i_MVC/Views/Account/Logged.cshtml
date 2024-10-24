@@ -1,0 +1,71 @@
+﻿@using Snai3i_BLL.DTO.AcountDto
+@model LoginDTO
+
+@{
+    Layout = "RegisteredLayout";
+}
+@{
+    var error = ViewBag.ErrorMessage;
+}
+
+@if (error != null)
+{
+    <div class="alert">
+        <p>@error</p>
+    </div>
+}
+<div class="container-fluid bg-light d-none d-lg-block">
+    <div class="row align-items-center top-bar">
+        <div class="col-lg-3 col-md-12 text-center text-lg-start">
+            <a href="" class="navbar-brand m-0 p-0">
+                <h1 class="text-primary m-0">Snai3i</h1>
+            </a>
+        </div>
+
+    </div>
+</div>
+<!-- Topbar End -->
+<!-- Navbar Start -->
+<div class="container-fluid nav-bar bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4">
+        <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+            <h1 class="text-primary m-0">Snai3i</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav me-auto">
+                <a href="@Url.Action("Index", "Home")" class="nav-item nav-link active">Home</a>
+                <a href="@Url.Action("About", "Home")" class="nav-item nav-link">About</a>
+                <a href="@Url.Action("GetallWorkers", "Worker")" class="nav-item nav-link">Worker</a>
+                <a href="@Url.Action("Getalltool", "Tools",new { PageNumber=1,pagesize=2 })" class="nav-item nav-link">Tools</a>
+                <a href="@Url.Action("Index", "Dashboard")" class="nav-item nav-link">Contact</a>
+            </div>
+
+        </div>
+        <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4  d-flex align-items-center">
+            <button class="btn btn-primary m-1" type="button" id="cart">
+                <i class="fa fa-solid fa-shopping-cart"></i>
+            </button>
+            <button class="btn btn-primary m-1" type="button" id="Chat">
+                <i class="fa fa-solid fa-envelope"></i>
+            </button>
+
+            <div class="dropdown m-1" >
+                <button class="btn btn-primary dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user"></i>
+                </button>
+             
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                    <li><a class="dropdown-item" href="/Accounts/Profile?mail=@Model.email">Profile</a></li>
+                    <li><a class="dropdown-item" asp-controller="Accounts" asp-action="Signout">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+
+        @*  <div class="mt-4 mt-lg-0 me-lg-n4 py-3 px-4">
+        <img style="width:100px; height:100px;" src="https://localhost:7000/Uploads/@Model." />
+        </div> *@
+    </nav>
+</div>

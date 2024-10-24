@@ -1,0 +1,60 @@
+﻿
+@using Snai3i_BLL.DTO.CraftDto
+
+@model IEnumerable<CraftReadDTO>
+
+
+
+@{
+	Layout = "_AdminDashboardLayout";
+}
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Crafts 
+    </div>
+    <a href="@Url.Action("Add", "Crafts")" class="btn btn-warning m-4">New Craft</a>
+
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+
+                    <th>Operation</th>
+
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+
+                    <th>Operation</th>
+
+                </tr>
+            </tfoot>
+            <tbody>
+                @foreach (var craft in Model)
+        {
+                <tr>
+                    <td>@craft.CraftName</td>
+                        <td><img style="width:100px; height:100px;" src="https://localhost:7000/Uploads/@craft.PictureUrl" /> </td>
+
+                        <td>
+                            <a href="@Url.Action("Edit", "Crafts")" class="btn btn-primary">Edit</a>
+                            <a href="@Url.Action("Delete", "Crafts")" class="btn btn-danger">Delete</a>
+
+                        </td>
+
+                </tr>
+        }
+
+            </tbody>
+        </table>
+    </div>
+</div>

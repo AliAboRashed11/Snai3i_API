@@ -1,0 +1,38 @@
+﻿@model Snai3i_BLL.DTO.ToolsDTO.UpdateToolDTO
+
+@{
+    Layout = "_AdminDashboardLayout";  
+}
+
+<h2>Edit Tool</h2>
+<form action="@Url.Action("Edit")" method="post" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="Name"> Name</label>
+        <input type="text" class="form-control" id="Name" name="Name" value="@Model.Name" />
+    </div>
+
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <input type="text" class="form-control" id="Description" name="Description" value="@Model.Description" />
+
+    </div>
+
+@*     <div class="form-group">
+        <label for="Price">Price</label>
+        <input type="text" class="form-control" id="Price" name="Price" value="@Model.Price" />
+    </div>
+
+    <div class="form-group">
+        <label for="Stock">Stock</label>
+        <input type="number" class="form-control" id="Stock" name="Stock" value="@Model.Stock" />
+    </div> *@
+
+    <div class="form-group">
+        <label for="imageFile">  Image</label>
+        <input type="file" class="form-control-file" id="imageFile" name="imageFile" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save </button>
+    <a href="@Url.Action("GetAllTools", "Tools")" class="btn btn-secondary">Cancel</a>
+</form>

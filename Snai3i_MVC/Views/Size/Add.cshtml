@@ -1,0 +1,53 @@
+﻿@using Snai3i_BLL.DTO.SizesDTO
+
+@model AddSizeDTO
+
+
+@{
+    Layout = "_AdminDashboardLayout";
+    var tools = ViewBag.tools;
+}
+
+
+<form action="@Url.Action("SaveData")" method="post" enctype="multipart/form-data">
+    <div>
+        <label>ToolSize</label>
+        <input type="Text" name="ToolSize" class="form-control" />
+    </div>
+
+    <div>
+        <label>Price</label>
+        <input type="Text" name="Price" class="form-control" />
+    </div>
+    <div>
+        <label>Stock</label>
+        <input type="text" name="Stock" class="form-control" />
+    </div>
+
+    <div>
+        <label class="form-label float-right p-1">القسم</label>
+
+        <select name="ToolId" class="form-control">
+          @*   @foreach (var item in tools)
+            {
+                <option value="@item.Id">@item.Name</option>
+            } *@
+            @if (tools != null && tools.Any())
+            {
+                foreach (var item in tools)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            }
+            else
+            {
+                <p>No tools available.</p>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Save" class="btn btn-outline-primary" />
+</form>
+
+
+
+

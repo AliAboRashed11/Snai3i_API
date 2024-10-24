@@ -1,0 +1,32 @@
+﻿
+@using Snai3i_BLL.DTO.ToolsDTO
+
+@model IEnumerable<AddToolDTO>
+
+@{
+    Layout = "_AdminDashboardLayout";
+}
+
+
+<form action="@Url.Action("SaveData")" method="post" enctype="multipart/form-data">
+    <div>
+        <label>Name</label>
+        <input type="Text" name="Name" class="form-control" />
+    </div>
+   
+    <div>
+        <label>Description</label>
+        <input type="Text" name="Description" class="form-control" />
+    </div>
+    <div>
+        <label>Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+    
+   
+    <input type="submit" value="Save" class="btn btn-outline-primary" />
+</form>
+
+
+
+
