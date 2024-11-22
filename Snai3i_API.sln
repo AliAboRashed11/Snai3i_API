@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snai3i_BLL", "Snai3i_BLL\Sn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snai3i_DAL", "Snai3i_DAL\Snai3i_DAL.csproj", "{F8AF3A72-5796-4E5B-8DA8-B35857171DAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snai3i_MVC", "Snai3i_MVC\Snai3i_MVC.csproj", "{D382C7EB-39EE-4BDE-B700-B33F8579933D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snai3i_MVC", "Snai3i_MVC\Snai3i_MVC.csproj", "{D382C7EB-39EE-4BDE-B700-B33F8579933D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{2CF195A9-B7FE-495F-A9C8-A06C8DC88F22}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\abora\Desktop\Presentation.pptx = C:\Users\abora\Desktop\Presentation.pptx
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
